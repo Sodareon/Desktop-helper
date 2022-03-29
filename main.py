@@ -14,12 +14,13 @@ opts = {
     "cmds": {
         "ctime": ("текущее время", "сейчас времени", "который час"),
         "stupid1": ('расскажи анекдот', 'рассмеши меня', 'ты знаешь анекдоты'),
-        "fast_access_folder": ('папку'),
-        "fast_access_notepad": ('блокнот'),
-        "fast_access_word": ('документ'),
-        "chrome_youtube" : ('видео')
+        "fast_access_folder": 'папку',
+        "fast_access_notepad": 'блокнот',
+        "fast_access_word": 'документ',
+        "chrome_youtube" : 'видео'
     }
 }
+
 
 def speak(what):
     print(what)
@@ -27,6 +28,7 @@ def speak(what):
     speak_engine.runAndWait()
     speak_engine.stop()
 
+    
 def callback(recognizer, audio):
     try:
         voice = recognizer.recognize_google(audio, language="ru-RU").lower()
@@ -54,6 +56,7 @@ def recognize_cmd(cmd):
                 RC['percent'] = vrt
     return RC
 
+
 def execute_cmd(cmd):
     if cmd == 'ctime':
         now = datetime.datetime.now()
@@ -72,6 +75,7 @@ def execute_cmd(cmd):
     else:
         speak("Команда не распознана повторите")
 
+        
 r = sr.Recognizer()
 m = sr.Microphone()
 
